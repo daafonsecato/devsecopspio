@@ -279,6 +279,8 @@ POSSIBILITY OF SUCH DAMAGES.
 
                      END OF TERMS AND CONDITIONS
 
+To comply with the GNU General Public License v2.0, this project is only intended to be referenced by GitHub or any other Source Code Management strategy with Git. If you share a copy of this code, share the .git folder to be a repository to track all changes made.
+
             How to Apply These Terms to Your New Programs
 
   If you develop a new program, and you want it to be of the greatest
