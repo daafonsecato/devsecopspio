@@ -16,6 +16,10 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+AWS_ACCESS_KEY_ID = 'YOUR_NEW_AWS_ACCESS_KEY_ID'
+AWS_SECRET_ACCESS_KEY = 'YOUR_NEW_AWS_SECRET_ACCESS_KEY'
+
+SLACK_API_TOKEN = 'YOUR_NEW_SLACK_API_TOKEN'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -28,7 +32,7 @@ SECRET_KEY = '0yxzudryd8)-%)(fz&7q-!v&cq1u6vbfoc4u7@u_&i)b@4eh^q'
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -41,13 +45,11 @@ INSTALLED_APPS = (
     'taskManager'
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.middleware.common.CommonMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
@@ -81,6 +83,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Static files (CSS, JavaScript, Images)
@@ -93,7 +97,23 @@ STATICFILES_DIRS = (
     '/var/www/static/',
 )
 
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+# TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 LOGIN_URL = '/taskManager/login/'
 
@@ -102,6 +122,8 @@ PASSWORD_HASHERS = ['django.contrib.auth.hashers.MD5PasswordHasher']
 
 # A2: Broken Auth and Session Management
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+
+X_FRAME_OPTIONS = "ALLOWALL"
 
 EMAIL_PORT = 1025
 
